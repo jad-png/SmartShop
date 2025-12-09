@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:smartshop-test;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+    show-sql: false
+  sql:
+    init:
+      mode: never
+
+smartshop:
+  pricing:
+    tva-rate: 0.20
+    cash-limit: 20000.00
+    rounding-scale: 2
+  loyalty:
+    tiers:
+      SILVER:
+        minOrders: 3
+        minSpent: 1000.00
+        discountPercent: 0.05
+        minOrderAmountForDiscount: 500.00
+      GOLD:
+        minOrders: 10
+        minSpent: 5000.00
+        discountPercent: 0.10
+        minOrderAmountForDiscount: 800.00
+      PLATINUM:
+        minOrders: 20
+        minSpent: 15000.00
+        discountPercent: 0.15
+        minOrderAmountForDiscount: 1200.00
