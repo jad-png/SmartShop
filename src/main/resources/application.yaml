@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/smartshop}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  application:
+    name: smartshop
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+server:
+  port: 8080
+
+
+smartshop:
+  loyalty:
+    tiers:
+      SILVER:
+        minOrders: 3
+        minSpent: 1000.00
+        discountPercent: 0.05
+        minOrderAmountForDiscount: 500.00
+      GOLD:
+        minOrders: 10
+        minSpent: 5000.00
+        discountPercent: 0.10
+        minOrderAmountForDiscount: 800.00
+      PLATINUM:
+        minOrders: 20
+        minSpent: 15000.00
+        discountPercent: 0.15
+        minOrderAmountForDiscount: 1200.00
+  pricing:
+    tva-rate: 0.20
+    cash-limit: 20000.00
+    rounding-scale: 2
